@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 Gem::Specification.new do |s|
   s.name        = "capistrano-new-relic"
-  s.version     = "0.0.3"
+  s.version     = "0.0.4"
   s.authors     = ["Gunnar Lium"]
   s.email       = ["post@gunnarlium.com"]
   s.homepage    = "http://github.com/gunnarlium/capistrano-new-relic"

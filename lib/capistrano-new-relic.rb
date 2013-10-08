@@ -37,7 +37,7 @@ Capistrano::Configuration.instance.load do
             -d "deployment[revision]=#{current_rev}"\
             --data-binary @#{tmp_file_name}\
             https://rpm.newrelic.com/deployments.xml\
-            >nul 2>&1\
+            > /dev/null 2>&1\
         }
         File.unlink(tmp_file_name)
     end

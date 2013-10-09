@@ -7,13 +7,12 @@ Capistrano::Configuration.instance.load do
     ENV['NEW_RELIC_API_KEY']
   } unless exists? :new_relic_api_key
 
-  [:new_relic_app_name, :deploy_env, :application, :branch].each do |name|
-    set(name) { abort "Please specify :#{name}".red } unless exists? name
-  end
 
   namespace :newrelic do
     desc 'Notify New Relic of deployment'
     task :notify do
+      abort 'Please specify :new_relic_app_name'.red unless exists? :new_relic_app_name
+      abort 'Please specify :deploy_env'.red unless exists? :deploy_env
       local_user = run_locally('git config user.name').strip
       local_user_email = run_locally('git config user.email').strip
       current_rev = capture("cd #{latest_release}; git rev-parse HEAD").strip

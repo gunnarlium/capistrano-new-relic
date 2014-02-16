@@ -12,6 +12,7 @@ Capistrano::Configuration.instance.load do
     desc 'Notify New Relic of deployment'
     task :notify do
       abort 'Please specify :new_relic_app_name'.red unless exists? :new_relic_app_name
+      abort 'Please specify :new_relic_app_id'.red unless exists? :new_relic_app_id
       abort 'Please specify :deploy_env'.red unless exists? :deploy_env
       local_user = run_locally('git config user.name').strip
       local_user_email = run_locally('git config user.email').strip
@@ -23,11 +24,12 @@ Capistrano::Configuration.instance.load do
       run_locally %Q{\
             curl -s -H "x-api-key:#{new_relic_api_key}"\
             -d "deployment[app_name]=#{new_relic_app_name}"\
+            -d "deployment[application_id]=#{new_relic_app_id}"\
             -d "deployment[description]=Deploy #{application}/#{branch} to #{deploy_env}"\
             -d "deployment[user]=#{local_user} <#{local_user_email}>"\
             -d "deployment[revision]=#{current_rev}"\
             --data-binary @#{tmp_file_name}\
-            https://rpm.newrelic.com/deployments.xml\
+            https://api.newrelic.com/deployments.xml\
             > /dev/null 2>&1\
                   }
       File.unlink(tmp_file_name)

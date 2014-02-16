@@ -27,7 +27,8 @@ Include the recipe
 
 Set required parameters
 
-	set :application, "My Application"
+	set :new_relic_app_name, "My Application"
+	set :new_relic_app_id, "XXXXXXXXXX"
 	set :branch, "master"
 	set :deploy_env, "production"
 	set :new_relic_api_key, "<yoursecretapikey>"

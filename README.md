@@ -1,11 +1,14 @@
 # capistrano-new-relic
 
-Capistrano recipe to notify New Relic of deployments.
+Capistrano v2 recipe to notify New Relic of deployments.
+
 
 This gem is inspired by https://github.com/martinj/capistrano-jenkins.
 
 Your your name and email os fetched from git config, so make sure you have
 valid values for `user.name` and `user.email`.
+
+__Note:__ Capistrano 3 is completely incompatible with Capistrano 2. If you are using Capistrano 3 you can use [cap-newrelic](https://github.com/rjocoleman/cap-newrelic) (the configuration is not directly compatible).
 
 ## Installation
 

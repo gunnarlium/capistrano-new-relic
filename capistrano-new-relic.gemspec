@@ -14,6 +14,6 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
   s.license       = 'MIT'
 
-  s.add_dependency 'capistrano'
+  s.add_dependency 'capistrano', '>= 2.0', '< 3.0'
   s.add_dependency 'colored'
 end
